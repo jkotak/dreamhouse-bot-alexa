@@ -19,7 +19,7 @@ app.post('/dreamhouse', (req, res) => {
         response = alx.response;
 
     if (type === 'LaunchRequest') {
-        response.say("Welcome to Dreamhouse");
+        response.say("Welcome to Cumulus Mortgage Demo");
     } else if (type === 'IntentRequest') {
         let handler = handlers[intent];
         if (handler) {
@@ -34,5 +34,5 @@ app.post('/dreamhouse', (req, res) => {
 });
 
 app.listen(app.get('port'), function() {
-    console.log("Dreamhouse Alexa server listening on port " + app.get('port'));
+    console.log("Cumulus Alexa server listening on port " + app.get('port'));
 });
