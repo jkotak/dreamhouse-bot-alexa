@@ -40,7 +40,10 @@ app.post('/dreamhouse',requestVerifier, (req, res) => {
 
     if (type === 'LaunchRequest') {
         response.say("Welcome to Cumulus Mortgage Demo");
-    } else if (type === 'IntentRequest') {
+    } else if (req.body.request.type === 'SessionEndedRequest') {
+        // Per the documentation, we do NOT send ANY response... I know, awkward.
+        console.log('Session ended', req.body.request.reason);
+    }else if (type === 'IntentRequest') {
         let handler = handlers[intent];
         if (handler) {
             handler(slots, session, response);
