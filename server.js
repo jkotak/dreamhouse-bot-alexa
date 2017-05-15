@@ -5,7 +5,7 @@ let express = require('express'),
     alexa = require('./alexa'),
     handlers = require('./handlers'),
     app = express(),
-    verifier = require('alexa-verifier');
+    alexaVerifier = require('alexa-verifier');
 
 function requestVerifier(req, res, next) {
     alexaVerifier(
