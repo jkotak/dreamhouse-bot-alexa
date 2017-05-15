@@ -4,7 +4,8 @@ let express = require('express'),
     bodyParser = require('body-parser'),
     alexa = require('./alexa'),
     handlers = require('./handlers'),
-    app = express();
+    app = express(),
+    verifier = require('alexa-verifier');
 
 app.set('port', (process.env.PORT || 5000));
 app.use(bodyParser.json());
