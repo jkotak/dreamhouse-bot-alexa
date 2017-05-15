@@ -5,7 +5,7 @@ let express = require('express'),
     alexa = require('./alexa'),
     handlers = require('./handlers'),
     app = express(),
-    verifier = require('alexa-verifier');
+    verifier = require('alexa-verifier-middleware');
 
 app.set('port', (process.env.PORT || 5000));
 app.use(bodyParser.json());
