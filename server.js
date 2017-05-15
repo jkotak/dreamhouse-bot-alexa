@@ -5,12 +5,31 @@ let express = require('express'),
     alexa = require('./alexa'),
     handlers = require('./handlers'),
     app = express(),
-    verifier = require('alexa-verifier-middleware');
+    verifier = require('alexa-verifier');
+
+function requestVerifier(req, res, next) {
+    alexaVerifier(
+        req.headers.signaturecertchainurl,
+        req.headers.signature,
+        req.rawBody,
+        function verificationCallback(err) {
+            if (err) {
+                res.status(401).json({ message: 'Verification Failure', error: err });
+            } else {
+                next();
+            }
+        }
+    );
+}
 
 app.set('port', (process.env.PORT || 5000));
-app.use(bodyParser.json());
+app.use(bodyParser.json({
+    verify: function getRawBody(req, res, buf) {
+        req.rawBody = buf.toString();
+    }
+}));
 
-app.post('/dreamhouse', (req, res) => {
+app.post('/dreamhouse',requestVerifier, (req, res) => {
 
     let alx = alexa(req, res),
         type = alx.type,
