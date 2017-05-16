@@ -37,7 +37,7 @@ app.post('/dreamhouse',requestVerifier, (req, res) => {
         slots = alx.slots,
         session = alx.session,
         response = alx.response;
-
+    console.log('Logging request'+ type + ' ' + intent + ' ' + session);
     if (type === 'LaunchRequest') {
         
         response.say("Welcome to Cumulus Mortgage Demo. What would you like to know? You can ask me questions like Alexa ask Cumulus mortgage for listings",'false');
