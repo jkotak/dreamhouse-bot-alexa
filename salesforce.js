@@ -93,6 +93,23 @@ let findPriceChanges = () => {
     });
 };
 
+let findAllRateTypes = () => {
+    return new Promise((resolve, reject) => {
+        let q = `SELECT
+                    Product_Type__c,
+                    count(Name)
+                FROM Rate_Sheet__c
+                Group By Product_Type__c`;
+        console.log("Query "+ q);
+        org.query({query: q}, (err, resp) => {
+            if (err) {
+                reject("An error as occurred");
+            } else {
+                resolve(resp.records);
+            }
+        });
+    });
+};
 
 let createCase = (propertyId, customerName, customerId) => {
 
