@@ -40,7 +40,7 @@ app.post('/dreamhouse',requestVerifier, (req, res) => {
 
     if (type === 'LaunchRequest') {
         
-        response.say("Welcome to Cumulus Mortgage Demo. What would you like to know? You can ask me questions like Alexa ask Cumulus mortgage for listings",false);
+        response.say("Welcome to Cumulus Mortgage Demo. What would you like to know? You can ask me questions like Alexa ask Cumulus mortgage for listings",'false');
     } else if (type === 'SessionEndedRequest') {
         // Per the documentation, we do NOT send ANY response... I know, awkward.
         console.log('Session ended', req.body.request.reason);
