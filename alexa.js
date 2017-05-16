@@ -13,7 +13,7 @@ module.exports = (req, res) => {
     }
 
     let say = (text, shouldEndSession) => {
-
+        console.log('Session '+ shouldEndSession);
         let outputSpeech = {};
 
         if (text.indexOf("/>") > 0 || text.indexOf("</")) {
