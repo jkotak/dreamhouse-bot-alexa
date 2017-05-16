@@ -45,7 +45,7 @@ module.exports = (req, res) => {
 
         session: session,
         response: {
-            say: text => say(text, shouldEndSession),
+            say: text => say(text, true),
             ask: text => say(text, false)
         }
 
