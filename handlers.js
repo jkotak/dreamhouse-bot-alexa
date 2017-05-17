@@ -2,6 +2,17 @@
 
 let salesforce = require("./salesforce");
 
+exports.searchProducts = (slots, session, response)  => {
+    session.attributes.stage = "ask_ratetype";
+    let text = 'OK, which product would you like the rates for?<break time="0.5s" />';
+    salesforce.findAllRateTypes().then(rateTypes => {
+        productOptions.forEach(product => {
+            text += '${product.get("Product_Type__c")} <break time="0.5s" />'
+        });
+    });
+    response.ask(text);
+};
+
 exports.SearchHouses = (slots, session, response) => {
     session.attributes.stage = "ask_city";
     response.ask("OK, in what city?");
