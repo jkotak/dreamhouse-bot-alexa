@@ -13,7 +13,7 @@ exports.searchProducts = (slots, session, response)  => {
     response.ask(text);
 };
 
-exports.help = () => {
+exports.help = (slots, session, response) => {
     response.ask("Sure, you can ask me questions like Alexa ask Cumulus mortgage for what is for sale.");
 }
 
