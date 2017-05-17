@@ -13,6 +13,10 @@ exports.searchProducts = (slots, session, response)  => {
     response.ask(text);
 };
 
+exports.help = () => {
+    response.ask("Sure, you can ask me questions like Alexa ask Cumulus mortgage for what is for sale.");
+}
+
 exports.SearchHouses = (slots, session, response) => {
     session.attributes.stage = "ask_city";
     response.ask("OK, in what city?");
