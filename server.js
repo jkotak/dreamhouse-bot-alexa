@@ -45,6 +45,11 @@ app.post('/dreamhouse',requestVerifier, (req, res) => {
         // Per the documentation, we do NOT send ANY response... I know, awkward.
         console.log('Session ended', req.body.request.reason);
     }else if (type === 'IntentRequest') {
+        if(intent==='AMAZON.HelpIntent'){
+            response.ask("Sure, you can ask me questions like Alexa ask Cumulus mortgage for what is for sale.");
+        }else if(intent==='AMAZON.CancelIntent'){
+            response.say("Consider it done!");
+        }
         let handler = handlers[intent];
         if (handler) {
             handler(slots, session, response);
