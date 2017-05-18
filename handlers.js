@@ -6,10 +6,10 @@ exports.SearchProducts = (slots, session, response)  => {
     session.attributes.stage = "ask_ratetype";
     let text = 'OK, which product would you like the rates for?<break time="0.5s" />';
     salesforce.findAllRateTypes().then(rateTypes => {
-        console.log(rateTypes);
         rateTypes.forEach(product => {
             console.log(product);
             text += '${product.get("Product_Type__c")} <break time="0.5s" />';
+            console.log(text);
         });
     });
     response.ask(text);
