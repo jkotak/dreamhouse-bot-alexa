@@ -9,7 +9,7 @@ exports.SearchProducts = (slots, session, response)  => {
         rateTypes.forEach(product => {
             console.log(product);
             let productType = product.get("Product_Type__c");
-            text += productType + '<break time="0.5s" />';
+            text +='<break time="0.5s" />' + productType ;
             console.log(text);
         });
         console.log('FINAL' + text);
