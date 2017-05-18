@@ -12,9 +12,9 @@ exports.SearchProducts = (slots, session, response)  => {
             text += productType;
             console.log(text);
         });
+        console.log('FINAL' + text);
+        response.ask(text);
     });
-    console.log('FINAL' + text);
-    response.ask(text);
 };
 
 
