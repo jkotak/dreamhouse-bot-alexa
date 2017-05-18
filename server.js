@@ -51,12 +51,13 @@ app.post('/dreamhouse',requestVerifier, (req, res) => {
             response.say("Consider it done!");
         }else if(intent==='AMAZON.StopIntent'){
             response.say("Consider it done!");
-        }
-        let handler = handlers[intent];
-        if (handler) {
-            handler(slots, session, response);
-        } else {
-            response.say("I don't know how to answer that");
+        }else{
+            let handler = handlers[intent];
+            if (handler) {
+                handler(slots, session, response);
+            } else {
+                response.say("I don't know how to answer that");
+            }
         }
     } else {
         response.say("Not sure what you mean");
