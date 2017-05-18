@@ -7,7 +7,7 @@ exports.SearchProducts = (slots, session, response)  => {
     let text = 'OK, which product would you like the rates for?<break time="0.5s" />';
     salesforce.findAllRateTypes().then(rateTypes => {
         rateTypes.forEach(product => {
-            text += '${product.get("Product_Type__c")} <break time="0.5s" />'
+            text += '${product.get("Product_Type__c")} <break time="0.5s" />';
         });
     });
     response.ask(text);
