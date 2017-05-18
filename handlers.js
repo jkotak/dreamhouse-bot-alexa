@@ -4,7 +4,7 @@ let salesforce = require("./salesforce");
 
 exports.SearchProducts = (slots, session, response)  => {
     session.attributes.stage = "ask_ratetype";
-    let text = 'OK, which product would you like the rates for?';
+    let text = 'OK, which product would you like the rates for';
     salesforce.findAllRateTypes().then(rateTypes => {
         rateTypes.forEach(product => {
             console.log(product);
