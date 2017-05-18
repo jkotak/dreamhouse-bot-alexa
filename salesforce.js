@@ -132,6 +132,27 @@ let createCase = (propertyId, customerName, customerId) => {
     });
 
 };
+let createLead = (propertyId, customerFirstName, customerLastName, customerEmail) => {
+
+    return new Promise((resolve, reject) => {
+         let c = nforce.createSObject('Lead');
+        c.set('firstname', `Contact ${customerFirstName} (Alexa Customer)`);
+        c.set('lastname', customerLastName);
+        c.set('LeadSource', 'Alexa');
+        c.set('email', customerEmail);
+        c.set('status', 'New');
+
+        org.insert({sobject: c}, err => {
+            if (err) {
+                console.error(err);
+                reject("An error occurred while creating a lead");
+            } else {
+                resolve(c);
+            }
+        });
+    });
+
+};
 
 login();
 
@@ -139,4 +160,5 @@ exports.org = org;
 exports.findProperties = findProperties;
 exports.findPriceChanges = findPriceChanges;
 exports.createCase = createCase;
+exports.createLead = createLead;
 exports.findAllRateTypes = findAllRateTypes;
