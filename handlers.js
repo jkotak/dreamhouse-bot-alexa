@@ -8,6 +8,7 @@ exports.SearchProducts = (slots, session, response)  => {
     salesforce.findAllRateTypes().then(rateTypes => {
         rateTypes.forEach(product => {
             console.log(product);
+            console.log(product.get("Product_Type__c"));
             text += '${product.get("Product_Type__c")} <break time="0.5s" />';
             console.log(text);
         });
