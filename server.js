@@ -49,6 +49,8 @@ app.post('/dreamhouse',requestVerifier, (req, res) => {
             response.ask("Sure, you can ask me questions like Alexa ask Cumulus mortgage for what is for sale.");
         }else if(intent==='AMAZON.CancelIntent'){
             response.say("Consider it done!");
+        }else if(intent==='AMAZON.StopIntent'){
+            response.say("Consider it done!");
         }
         let handler = handlers[intent];
         if (handler) {
