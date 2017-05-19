@@ -18,6 +18,7 @@ exports.SearchProducts = (slots, session, response)  => {
 };
 exports.SearchRateType = (slots, session, response) => {
     session.attributes.rateType = slots.RateType.value;
+    console.log('Looking for rates of type:' + session.attributes.rateType);
     let text = 'OK, the different rates for ${session.attributes.city} are as follows ';
     salesforce.findRate(session.attributes.city).then(products => {
         if(products && products.length>0){
