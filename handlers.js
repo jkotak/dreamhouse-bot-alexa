@@ -20,7 +20,7 @@ exports.SearchRateType = (slots, session, response) => {
     session.attributes.rateType = slots.RateType.value;
     console.log('Looking for rates of type:' + session.attributes.rateType);
     let text = 'OK, the different rates for ${session.attributes.city} are as follows ';
-    salesforce.findRate(session.attributes.city).then(products => {
+    salesforce.findRate(session.attributes.rateType).then(products => {
         if(products && products.length>0){
             products.forEach(product => {
                 text+= `For <break time="0.5s" />${product.get("Product_Name__c")} the rate is ${product.get("rate__c")}%  and the APR is ${product.get("apr__c")}%`;
