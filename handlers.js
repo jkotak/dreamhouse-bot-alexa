@@ -16,8 +16,24 @@ exports.SearchProducts = (slots, session, response)  => {
         response.ask(text);
     });
 };
-
-
+exports.SearchRateType = (slots, session, response) => {
+    session.attributes.rateType = slots.RateType.value;
+    let text = 'OK, the different rates for ${session.attributes.city} are as follows ';
+    salesforce.findRate(session.attributes.city).then(products => {
+        if(products && products.length>0){
+            products.forEach(product => {
+                text+= `For <break time="0.5s" />${product.get("Product_Name__c")} the rate is ${product.get("rate__c")}%  and the APR is ${product.get("apr__c")}%`;
+            }
+            response.say(text);
+        }else{
+            response.say(`Sorry, I didn't find any rates for type ${session.attributes.rateType} `);
+        }
+    })
+    .catch((err) => {
+        console.error(err);
+        response.say("Oops. Something went wrong");
+    });
+};
 
 exports.SearchHouses = (slots, session, response) => {
     session.attributes.stage = "ask_city";
