@@ -112,6 +112,7 @@ let findAllRateTypes = () => {
 };
 
 let findRate = (productType) => {
+    console.log('ProductType:'+ productType);
     return new Promise((resolve, reject) => {
         let q = `SELECT
                     rate__c,
