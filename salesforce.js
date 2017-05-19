@@ -183,3 +183,4 @@ exports.findPriceChanges = findPriceChanges;
 exports.createCase = createCase;
 exports.createLead = createLead;
 exports.findAllRateTypes = findAllRateTypes;
+exports.findRate = findRate;
