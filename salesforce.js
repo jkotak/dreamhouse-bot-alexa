@@ -111,7 +111,7 @@ let findAllRateTypes = () => {
     });
 };
 
-let findRate = (params) => {
+let findRate = (productType) => {
     return new Promise((resolve, reject) => {
         let q = `SELECT
                     rate__c,
@@ -119,7 +119,7 @@ let findRate = (params) => {
                     apr__c,
                     Product_Name__c
                     FROM Rate_Sheet__c
-                    WHERE Product_Type__c LIKE '${params.productType}'
+                    WHERE Product_Type__c LIKE '${productType}'
                     LIMIT 5`;
         console.log("Query "+ q);
         org.query({query: q}, (err, resp) => {
