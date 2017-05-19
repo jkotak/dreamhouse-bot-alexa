@@ -29,6 +29,17 @@ app.use(bodyParser.json({
     }
 }));
 
+app.get('/authorize', (req, res) => {
+    var requestURI = req.param('redirect_uri');
+    var token = req.param('access_token');
+    var state = req.param('state');
+    var tokenType = req.param('token_type');
+    userid = token;
+    console.log(token+' '+ requestURI);
+    //handlers.authenticated(token);
+    res.redirect(requestURI+'&access_token='+token+'&state='+state+'&token_type='+tokenType);
+});
+
 app.post('/dreamhouse',requestVerifier, (req, res) => {
 
     let alx = alexa(req, res),
