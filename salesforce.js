@@ -120,7 +120,7 @@ let findRate = (productType) => {
                     apr__c,
                     Product_Name__c
                     FROM Rate_Sheet__c
-                    WHERE Product_Type__c LIKE '${productType}'
+                    WHERE Product_Type__c LIKE '%${productType}%'
                     LIMIT 5`;
         console.log("Query "+ q);
         org.query({query: q}, (err, resp) => {
