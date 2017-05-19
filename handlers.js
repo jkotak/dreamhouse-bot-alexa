@@ -23,7 +23,7 @@ exports.SearchRateType = (slots, session, response) => {
         if(products && products.length>0){
             products.forEach(product => {
                 text+= `For <break time="0.5s" />${product.get("Product_Name__c")} the rate is ${product.get("rate__c")}%  and the APR is ${product.get("apr__c")}%`;
-            }
+            });
             response.say(text);
         }else{
             response.say(`Sorry, I didn't find any rates for type ${session.attributes.rateType} `);
