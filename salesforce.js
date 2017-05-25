@@ -154,7 +154,7 @@ let createCase = (propertyId, customerName, customerId) => {
     });
 
 };
-let createLead = (propertyId, customerFirstName, customerLastName, customerEmail) => {
+let createLead = (customerFirstName, customerLastName, customerEmail) => {
 
     return new Promise((resolve, reject) => {
          let c = nforce.createSObject('Lead');
