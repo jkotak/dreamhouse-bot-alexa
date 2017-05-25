@@ -154,14 +154,13 @@ let createCase = (propertyId, customerName, customerId) => {
     });
 
 };
-let createLead = (customerFirstName, customerLastName, customerEmail) => {
+let createLead = (name, phone) => {
 
     return new Promise((resolve, reject) => {
          let c = nforce.createSObject('Lead');
-        c.set('firstname', `Contact ${customerFirstName} (Alexa Customer)`);
-        c.set('lastname', customerLastName);
+        c.set('name', `Contact ${name} (Alexa Customer)`);
         c.set('LeadSource', 'Alexa');
-        c.set('email', customerEmail);
+        c.set('phone', phone);
         c.set('status', 'New');
 
         org.insert({sobject: c}, err => {
