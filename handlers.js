@@ -100,15 +100,11 @@ exports.Changes = (slots, session, response) => {
 };
 
 exports.ContactLoanOfficer = (slots, session, response) => {
-    slots.FirstName.value
-    salesforce.createLead ()
-        .then(priceChanges => {
-            let text = "OK, here are the recent price changes: ";
-            priceChanges.forEach(priceChange => {
-                    let property = priceChange.get("Parent");
-                    text += `${property.Address__c}, ${property.City__c}.<break time="0.2s"/>
-                            Price changed from $${priceChange.get("OldValue")==null?0:priceChange.get("OldValue")} to $${priceChange.get("NewValue")}.<break time="0.5s"/>`;
-            });
+    let name = slots.Name.value;
+    let phone = slots.PhoneNumber.value;
+    salesforce.createLead (name,phone)
+        .then( => {
+            let text = "OK, I asked the loan officer to contact you.";
            response.say(text);
         })
         .catch((err) => {
