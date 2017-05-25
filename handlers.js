@@ -98,3 +98,21 @@ exports.Changes = (slots, session, response) => {
             response.say("Oops. Something went wrong");
         });
 };
+
+exports.ContactLoanOfficer = (slots, session, response) => {
+    slots.FirstName.value
+    salesforce.createLead ()
+        .then(priceChanges => {
+            let text = "OK, here are the recent price changes: ";
+            priceChanges.forEach(priceChange => {
+                    let property = priceChange.get("Parent");
+                    text += `${property.Address__c}, ${property.City__c}.<break time="0.2s"/>
+                            Price changed from $${priceChange.get("OldValue")==null?0:priceChange.get("OldValue")} to $${priceChange.get("NewValue")}.<break time="0.5s"/>`;
+            });
+           response.say(text);
+        })
+        .catch((err) => {
+            console.error(err);
+            response.say("Oops. Something went wrong");
+        });
+};
