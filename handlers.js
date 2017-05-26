@@ -51,7 +51,7 @@ exports.AnswerCity = (slots, session, response) => {
     }
 };
 
-exports.SearchListings = (slots, session, response){
+exports.SearchListings = (slots, session, response)=>{
     let city = slots.city.value;
     let bedrooms = slots.bedroom.value;
     let price = slots.price.value;
