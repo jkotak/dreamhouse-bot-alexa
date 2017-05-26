@@ -158,7 +158,7 @@ let createLead = (name, phone) => {
 
     return new Promise((resolve, reject) => {
          let c = nforce.createSObject('Lead');
-        c.set('firstname', `Contact ${name} (Alexa Customer)`);
+        c.set('name', `Contact ${name} (Alexa Customer)`);
         c.set('LeadSource', 'Alexa');
         c.set('phone', phone);
         c.set('status', 'New');
