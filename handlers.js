@@ -51,6 +51,30 @@ exports.AnswerCity = (slots, session, response) => {
     }
 };
 
+exports.SearchListings = (slots, session, response){
+    let city = slots.city.value;
+    let bedrooms = slots.bedroom.value;
+    let price = slots.price.value;
+    let priceMin = price * 0.8;
+    let priceMax = price * 1.2;
+    salesforce.findProperties({city:city, bedrooms: bedrooms, priceMin: priceMin, priceMax: priceMax})
+    .then(properties => {
+        if (properties && properties.length>0) {
+            let text = `OK, here is what I found for ${bedrooms} bedrooms in ${city} around $${price}: `;
+            properties.forEach(property => {
+                text += `${property.get("Address__c")}, ${property.get("City__c")}: $${property.get("Price__c")}. <break time="0.5s" /> `;
+            });
+            response.say(text);
+        } else {
+            response.say(`Sorry, I didn't find any ${session.attributes.bedrooms} bedrooms in ${session.attributes.city} around ${price}.`);
+        }
+    })
+    .catch((err) => {
+        console.error(err);
+        response.say("Oops. Something went wrong");
+    });
+};
+
 exports.AnswerNumber = (slots, session, response) => {
     if (session.attributes.stage === "ask_bedrooms") {
         session.attributes.bedrooms = slots.NumericAnswer.value;
