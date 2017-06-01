@@ -2,6 +2,7 @@
 
 let express = require('express'),
     bodyParser = require('body-parser'),
+    util = require('util'),
     alexa = require('./alexa'),
     handlers = require('./handlers'),
     app = express(),
