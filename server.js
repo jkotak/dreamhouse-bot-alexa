@@ -47,7 +47,6 @@ app.post('/dreamhouse',requestVerifier, (req, res) => {
         intent = alx.intent,
         slots = alx.slots,
         session = alx.session,
-        dialogState = alx.dialogState,
         response = alx.response;
     console.log('Logging request'+ type + ' ' + intent + ' ' + session);
     if (type === 'LaunchRequest') {
@@ -57,7 +56,7 @@ app.post('/dreamhouse',requestVerifier, (req, res) => {
         // Per the documentation, we do NOT send ANY response... I know, awkward.
         console.log('Session ended', req.body.request.reason);
     }else if (type === 'IntentRequest') {
-        console.log('dialogState:'+ dialogState);
+        console.log('dialogState:'+ intent.dialogState);
         if(intent==='AMAZON.HelpIntent'){
             response.ask("Sure, you can ask me questions like Alexa ask Cumulus mortgage for what is for sale.");
         }else if(intent==='AMAZON.CancelIntent'){
