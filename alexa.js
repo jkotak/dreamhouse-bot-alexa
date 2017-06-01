@@ -48,6 +48,8 @@ module.exports = (req, res) => {
         intent: intent,
 
         slots: slots,
+        
+        dialogState: dialogState,
 
         session: session,
         response: {
