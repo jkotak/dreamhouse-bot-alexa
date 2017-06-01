@@ -4,9 +4,15 @@ module.exports = (req, res) => {
 
     let session = req.body.session,
         intent,
+        dialogState,
         slots;
     session.attributes = session.attributes || {};
-
+    
+    
+    if(req.body.request.dialogState){
+         dialogState = req.body.request.dialogState;
+    }
+    
     if (req.body.request.intent) {
         intent = req.body.request.intent.name;
         slots = req.body.request.intent.slots;
