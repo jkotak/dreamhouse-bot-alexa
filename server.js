@@ -48,9 +48,8 @@ app.post('/dreamhouse',requestVerifier, (req, res) => {
         slots = alx.slots,
         session = alx.session,
         response = alx.response;
-    console.log('Logging request'+ type + ' ' + intent + ' ' + session);
+    console.log('Logging request'+ req);
     if (type === 'LaunchRequest') {
-        
         response.ask("Welcome to Cumulus Mortgage Demo. What would you like to know?","false");
     } else if (type === 'SessionEndedRequest') {
         // Per the documentation, we do NOT send ANY response... I know, awkward.
