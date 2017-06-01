@@ -48,7 +48,7 @@ app.post('/dreamhouse',requestVerifier, (req, res) => {
         intent = alx.intent,
         slots = alx.slots,
         session = alx.session,
-        dialogState = alx.dialogState;
+        dialogState = alx.dialogState,
         response = alx.response;
     console.log(util.inspect(req));
     console.log('dialogState: '+dialogState);
