@@ -44,7 +44,9 @@ module.exports = (req, res) => {
         res.json({
             version: req.version,
             sessionAttributes: session.attributes,
-            "type": "Dialog.Delegate"
+            "directives": [{
+                "type": "Dialog.Delegate"
+            }]
         });
 
     };
