@@ -8,7 +8,7 @@ module.exports = (req, res) => {
         slots;
     session.attributes = session.attributes || {};
     
-    
+    console.log(req.body.request.dialogState);
     if(req.body.request.dialogState){
          dialogState = req.body.request.dialogState;
     }
