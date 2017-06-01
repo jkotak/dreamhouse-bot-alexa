@@ -40,6 +40,14 @@ module.exports = (req, res) => {
         });
 
     };
+    let direct = () => {
+        res.json({
+            version: req.version,
+            sessionAttributes: session.attributes,
+            "type": "Dialog.Delegate"
+        });
+
+    };
 
     return {
 
