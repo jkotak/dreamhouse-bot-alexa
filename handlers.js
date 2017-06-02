@@ -131,8 +131,6 @@ exports.ContactLoanOfficer = (dialogState,slots, session, response) => {
         // Pre-fill slots: update the intent object with slot values for which
         // you have defaults, then return Dialog.Delegate with this updated intent
         // in the updatedIntent property.
-    } else if (dialogState != "COMPLETED"){
-        // return a Dialog.Delegate directive with no updatedIntent property.
     } else {
         // Dialog is now complete and all required slots should be filled,
         // so call your normal intent handler. 
