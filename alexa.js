@@ -38,7 +38,7 @@ module.exports = (req, res) => {
         });
 
     };
-    let direct = (text,shouldEndSession) => {
+    let direct = (shouldEndSession) => {
         console.log('In Direct');
         res.json({
             version: req.version,
@@ -69,7 +69,7 @@ module.exports = (req, res) => {
         response: {
             say: text => say(text, true),
             ask: text => say(text, false),
-            direct: text => direct(text,false)
+            direct: () => direct(false)
         }
 
     };
