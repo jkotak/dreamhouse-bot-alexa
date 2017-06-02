@@ -40,17 +40,17 @@ module.exports = (req, res) => {
     };
     let direct = (text,shouldEndSession) => {
         console.log('In Direct');
-        
         res.json({
-            "response": {
-                    "directives": [
-                        {
-                            "type": "Dialog.Delegate"
-                        }
-                    ],
-                    "shouldEndSession": shouldEndSession
-                },
+            version: req.version,
             sessionAttributes: session.attributes,
+            response: {
+                shouldEndSession: shouldEndSession,
+                "directives": [
+                    {
+                        "type": "Dialog.Delegate"
+                    }
+                ]
+            }
         });
 
     };
