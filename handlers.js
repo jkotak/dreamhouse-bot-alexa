@@ -123,31 +123,18 @@ exports.Changes = (slots, session, response) => {
         });
 };
 
-exports.ContactLoanOfficer = (dialogState,slots, session, response) => {
-
-    if (dialogState === "STARTED" || dialogState == "IN_PROGRESS"){
-        console.log('In Contact Officer Function');
-        response.direct('I am checking');
-        // Pre-fill slots: update the intent object with slot values for which
-        // you have defaults, then return Dialog.Delegate with this updated intent
-        // in the updatedIntent property.
-    } else {
-        // Dialog is now complete and all required slots should be filled,
-        // so call your normal intent handler. 
-        
-        let firstName = slots.FirstName.value;
-        let lastName = slots.LastName.value;
-        let phone = slots.PhoneNumber.value;
-        console.log(lastName + ' ' + phone);
-        salesforce.createLead (firstName,lastName,phone)
-        .then(() => {
-            let text = "OK, I asked the loan officer to contact you.";
-           response.say(text);
-        })
-        .catch((err) => {
-            console.error(err);
-            response.say("Oops. Something went wrong");
-        });
-    }
-    
+exports.ContactLoanOfficer = (dialogState,slots, session, response) => {        
+    let firstName = slots.FirstName.value;
+    let lastName = slots.LastName.value;
+    let phone = slots.PhoneNumber.value;
+    console.log(lastName + ' ' + phone);
+    salesforce.createLead (firstName,lastName,phone)
+    .then(() => {
+        let text = "OK, I asked the loan officer to contact you.";
+       response.say(text);
+    })
+    .catch((err) => {
+        console.error(err);
+        response.say("Oops. Something went wrong");
+    });
 };
