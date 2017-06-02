@@ -128,7 +128,7 @@ exports.Changes = (slots, session, response) => {
         });
 };
 
-exports.ContactLoanOfficer = (dialogState,slots, session, response) => {        
+exports.ContactLoanOfficer = (slots, session, response) => {        
     let firstName = slots.FirstName.value;
     let lastName = slots.LastName.value;
     let phone = slots.PhoneNumber.value;
