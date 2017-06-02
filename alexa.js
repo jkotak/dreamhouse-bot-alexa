@@ -42,6 +42,10 @@ module.exports = (req, res) => {
         res.json({
             version: req.version,
             sessionAttributes: session.attributes,
+            response: {
+                outputSpeech: outputSpeech,
+                shouldEndSession: shouldEndSession
+            },
             "directives": [{
                 "type": "Dialog.Delegate"
             }]
