@@ -39,7 +39,7 @@ module.exports = (req, res) => {
 
     };
     let direct = (text,shouldEndSession) => {
-        
+        console.log('In Direct');
         let outputSpeech = {};
 
         if (text.indexOf("/>") > 0 || text.indexOf("</")) {
