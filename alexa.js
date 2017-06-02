@@ -53,6 +53,7 @@ module.exports = (req, res) => {
             version: req.version,
             sessionAttributes: session.attributes,
             response: {
+                outputSpeech: outputSpeech,
                 shouldEndSession: shouldEndSession
             },
             "directives": [{
