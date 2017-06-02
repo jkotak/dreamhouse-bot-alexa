@@ -68,7 +68,7 @@ app.post('/dreamhouse',requestVerifier, (req, res) => {
             let handler = handlers[intent];
             if (handler) {
                 if(intent==='ContactLoanOfficer'){
-                    handler(intent, dialogState,slots, session, response);
+                    handler(dialogState,slots, session, response);
                 }else{
                     handler(slots, session, response);
                 }
