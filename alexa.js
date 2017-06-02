@@ -62,7 +62,8 @@ module.exports = (req, res) => {
         session: session,
         response: {
             say: text => say(text, true),
-            ask: text => say(text, false)
+            ask: text => say(text, false),
+            direct: () => direct()
         }
 
     };
