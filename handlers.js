@@ -135,10 +135,11 @@ exports.ContactLoanOfficer = (dialogState,slots, session, response) => {
         // Dialog is now complete and all required slots should be filled,
         // so call your normal intent handler. 
         
-        let name = slots.Name.value;
+        let firstName = slots.FirstName.value;
+        let lastName = slots.LastName.value;
         let phone = slots.PhoneNumber.value;
         console.log(name + ' ' + phone);
-        salesforce.createLead (name,phone)
+        salesforce.createLead (firstName,lastName,phone)
         .then(() => {
             let text = "OK, I asked the loan officer to contact you.";
            response.say(text);
