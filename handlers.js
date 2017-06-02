@@ -137,6 +137,7 @@ exports.ContactLoanOfficer = (dialogState,slots, session, response) => {
         
         let name = slots.Name.value;
         let phone = slots.PhoneNumber.value;
+        console.log(name + ' ' + phone);
         salesforce.createLead (name,phone)
         .then(() => {
             let text = "OK, I asked the loan officer to contact you.";
