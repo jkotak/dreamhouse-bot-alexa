@@ -8,7 +8,6 @@ module.exports = (req, res) => {
         slots;
     session.attributes = session.attributes || {};
     
-    console.log(req.body.request.dialogState);
     if(req.body.request.dialogState){
          dialogState = req.body.request.dialogState;
     }
@@ -19,7 +18,6 @@ module.exports = (req, res) => {
     }
 
     let say = (text, shouldEndSession) => {
-        console.log('Session '+ shouldEndSession);
         let outputSpeech = {};
 
         if (text.indexOf("/>") > 0 || text.indexOf("</")) {
