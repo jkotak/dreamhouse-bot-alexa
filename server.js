@@ -67,9 +67,11 @@ app.post('/dreamhouse',requestVerifier, (req, res) => {
         }else{
             let handler = handlers[intent];
             if (handler) {
-                console.log('Intent is '+ intent);
-                if(intent==='ContactLoanOfficer'){
-                    handler(dialogState,slots, session, response);
+                if (dialogState === "STARTED" || dialogState == "IN_PROGRESS"){
+                    response.direct();
+                    // Pre-fill slots: update the intent object with slot values for which
+                    // you have defaults, then return Dialog.Delegate with this updated intent
+                    // in the updatedIntent property.
                 }else{
                     handler(slots, session, response);
                 }
