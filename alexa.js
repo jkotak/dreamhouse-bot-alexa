@@ -40,25 +40,17 @@ module.exports = (req, res) => {
     };
     let direct = (text,shouldEndSession) => {
         console.log('In Direct');
-        let outputSpeech = {};
-
-        if (text.indexOf("/>") > 0 || text.indexOf("</")) {
-            outputSpeech.type = 'SSML';
-            outputSpeech.ssml = "<speak>" + text + "</speak>";
-        } else {
-            outputSpeech.type = 'PlainText';
-            outputSpeech.text = text;
-        }
+        
         res.json({
-            version: req.version,
+            "response": {
+                    "directives": [
+                        {
+                            "type": "Dialog.Delegate"
+                        }
+                    ],
+                    "shouldEndSession": shouldEndSession
+                },
             sessionAttributes: session.attributes,
-            response: {
-                outputSpeech: outputSpeech,
-                shouldEndSession: shouldEndSession
-            },
-            "directives": [{
-                "type": "Dialog.Delegate"
-            }]
         });
 
     };
