@@ -38,7 +38,17 @@ module.exports = (req, res) => {
         });
 
     };
-    let direct = () => {
+    let direct = (text,shouldEndSession) => {
+        
+        let outputSpeech = {};
+
+        if (text.indexOf("/>") > 0 || text.indexOf("</")) {
+            outputSpeech.type = 'SSML';
+            outputSpeech.ssml = "<speak>" + text + "</speak>";
+        } else {
+            outputSpeech.type = 'PlainText';
+            outputSpeech.text = text;
+        }
         res.json({
             version: req.version,
             sessionAttributes: session.attributes,
@@ -67,7 +77,7 @@ module.exports = (req, res) => {
         response: {
             say: text => say(text, true),
             ask: text => say(text, false),
-            direct: () => direct()
+            direct: text => direct(text,false)
         }
 
     };
