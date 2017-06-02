@@ -127,7 +127,7 @@ exports.ContactLoanOfficer = (dialogState,slots, session, response) => {
 
     if (dialogState === "STARTED"){
         console.log('In Contact Officer Function');
-        response.direct('');
+        response.direct('I am checking');
         // Pre-fill slots: update the intent object with slot values for which
         // you have defaults, then return Dialog.Delegate with this updated intent
         // in the updatedIntent property.
