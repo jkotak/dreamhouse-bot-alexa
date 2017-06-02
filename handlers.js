@@ -123,8 +123,8 @@ exports.Changes = (slots, session, response) => {
         });
 };
 
-exports.ContactLoanOfficer = (intent, dialogState,slots, session, response) => {
-    var updatedIntent = intent;
+exports.ContactLoanOfficer = (dialogState,slots, session, response) => {
+
     if (dialogState === "STARTED"){
         response.direct();
         // Pre-fill slots: update the intent object with slot values for which
