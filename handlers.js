@@ -19,12 +19,13 @@ exports.SearchProducts = (slots, session, response)  => {
 exports.SearchRateType = (slots, session, response) => {
     session.attributes.rateType = slots.RateType.value;
     console.log('Looking for rates of type:' + session.attributes.rateType);
-    let text = 'OK, the different rates for ${session.attributes.city} are as follows ';
+    let text = 'OK, the different rates for ${session.attributes.rateType} are as follows ';
     salesforce.findRate(session.attributes.rateType).then(products => {
         if(products && products.length>0){
             products.forEach(product => {
                 text+= ` <break time="0.5s" /> For ${product.get("Product_Name__c")} the rate is ${product.get("rate__c")}%  and the APR is ${product.get("apr__c")}%`;
             });
+            text += `<break time="0.5s" /> If you need to contact a loan officer, just say Alexa, ask cumulus mortgage to contact me.`;
             response.say(text);
         }else{
             response.say(`Sorry, I didn't find any rates for type ${session.attributes.rateType} `);
@@ -64,6 +65,8 @@ exports.SearchListings = (slots, session, response)=>{
             properties.forEach(property => {
                 text += `${property.get("Address__c")}, ${property.get("City__c")}: $${property.get("Price__c")}. <break time="0.5s" /> `;
             });
+            text += `<break time="0.5s" /> If you need to contact a loan officer, just say Alexa, ask cumulus mortgage to contact me.`;
+            
             response.say(text);
         } else {
             response.say(`Sorry, I didn't find any ${session.attributes.bedrooms} bedrooms in ${session.attributes.city} around ${price}.`);
@@ -115,6 +118,8 @@ exports.Changes = (slots, session, response) => {
                     text += `${property.Address__c}, ${property.City__c}.<break time="0.2s"/>
                             Price changed from $${priceChange.get("OldValue")==null?0:priceChange.get("OldValue")} to $${priceChange.get("NewValue")}.<break time="0.5s"/>`;
             });
+            text += `<break time="0.5s" /> If you need to contact a loan officer, just say Alexa, ask cumulus mortgage to contact me.`;
+            
            response.say(text);
         })
         .catch((err) => {
