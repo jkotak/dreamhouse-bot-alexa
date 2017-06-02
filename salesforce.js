@@ -154,11 +154,12 @@ let createCase = (propertyId, customerName, customerId) => {
     });
 
 };
-let createLead = (name, phone) => {
+let createLead = (firstName,lastName, phone) => {
 
     return new Promise((resolve, reject) => {
          let c = nforce.createSObject('Lead');
         c.set('lastname', `Contact ${name} (Alexa Customer)`);
+        c.set('firstname', `${name}`);
         c.set('LeadSource', 'Alexa');
         c.set('phone', phone);
         c.set('status', 'New');
