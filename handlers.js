@@ -125,7 +125,7 @@ exports.Changes = (slots, session, response) => {
 
 exports.ContactLoanOfficer = (dialogState,slots, session, response) => {
 
-    if (dialogState === "STARTED"){
+    if (dialogState === "STARTED" || dialogState == "IN_PROGRESS"){
         console.log('In Contact Officer Function');
         response.direct('I am checking');
         // Pre-fill slots: update the intent object with slot values for which
