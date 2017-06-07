@@ -169,6 +169,7 @@ let createLead = (firstName,lastName, phone) => {
                 console.error(err);
                 reject("An error occurred while creating a lead");
             } else {
+                console.log('Lead created');
                 resolve(c);
             }
         });
