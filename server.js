@@ -51,7 +51,7 @@ app.post('/dreamhouse',requestVerifier, (req, res) => {
         dialogState = alx.dialogState,
         response = alx.response;
     console.log(util.inspect(req));
-    //console.log('dialogState: '+dialogState);
+    console.log('Intent: '+intent);
     if (type === 'LaunchRequest') {
         response.ask("Welcome to Cumulus Mortgage Demo. What would you like to know?","false");
     } else if (type === 'SessionEndedRequest') {
