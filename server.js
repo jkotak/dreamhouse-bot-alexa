@@ -68,7 +68,7 @@ app.post('/dreamhouse',requestVerifier, (req, res) => {
             let handler = handlers[intent];
             if (handler) {
                 if (dialogState === "STARTED" || dialogState == "IN_PROGRESS"){
-                    response.direct();
+                    response.direct(false);
                     // Pre-fill slots: update the intent object with slot values for which
                     // you have defaults, then return Dialog.Delegate with this updated intent
                     // in the updatedIntent property.
