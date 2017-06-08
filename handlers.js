@@ -3,18 +3,22 @@
 let salesforce = require("./salesforce");
 
 exports.SearchProducts = (slots, session, response)  => {
-    session.attributes.stage = "ask_ratetype";
-    let text = 'OK, which of these rates types do you want the rates for';
-    salesforce.findAllRateTypes().then(rateTypes => {
-        rateTypes.forEach(product => {
-            console.log(product);
-            let productType = product.get("Product_Type__c");
-            text +='<break time="0.5s" />' + productType ;
-            console.log(text);
+    let rateType = slots.RateType.value;
+    if(rateType === 'all'){
+        let text = 'OK, which of these rates types do you want the rates for';
+        salesforce.findAllRateTypes().then(rateTypes => {
+            rateTypes.forEach(product => {
+                console.log(product);
+                let productType = product.get("Product_Type__c");
+                text +='<break time="0.5s" />' + productType ;
+                console.log(text);
+            });
+            console.log('FINAL' + text);
+            response.ask(text);
         });
-        console.log('FINAL' + text);
-        response.ask(text);
-    });
+    }else{
+        this.SearchRateType(slots, session, response);
+    }
 };
 exports.SearchRateType = (slots, session, response) => {
     session.attributes.rateType = slots.RateType.value;
