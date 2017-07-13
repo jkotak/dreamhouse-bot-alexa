@@ -1,7 +1,10 @@
 {
   "name": "echolab",
   "version": "1.0.0",
-  "description": "",
+  "engines":{
+      "node": "6.11.1"
+  },
+  "description" : "Alexa Bot",
   "main": "server.js",
   "scripts": {
     "start": "node server",
